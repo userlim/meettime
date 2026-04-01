@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     'availability poll', 'schedule coordinator', 'time picker', 'free meeting planner',
     'group availability', 'team scheduling tool', 'meeting time finder',
   ],
-  metadataBase: new URL('https://meettime-app.vercel.app'),
+  metadataBase: new URL('https://meettime-tawny.vercel.app'),
   openGraph: {
     title: 'MeetTime - Find the Best Meeting Time for Everyone',
     description: 'Create a free scheduling poll. Share the link and let everyone mark their available times. No signup needed.',
@@ -40,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="google-site-verification" content="hsjncRi9cl3tz3Otd6SJKurSt_V1bZ0AKO-bdWIGeHM" />
         <meta name="google-adsense-account" content="ca-pub-4361110443201092" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4361110443201092" crossOrigin="anonymous"></script>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-P08T3SZDQH" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-P08T3SZDQH');`}
