@@ -3,8 +3,8 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'MeetTime - Free Group Schedule Coordinator | Find the Best Meeting Time',
-  description: 'Free online meeting scheduler. Create an event, share the link, and find the perfect time for everyone. Supports timezones worldwide. No signup required.',
+  title: 'MeetTime (Free, 2026) – Find the Best Meeting Time for Everyone',
+  description: 'Find the perfect meeting time for your group in seconds. Free 2026 schedule coordinator with timezone support. No signup needed — share and coordinate.',
   keywords: [
     'meeting scheduler', 'group schedule', 'find meeting time', 'when to meet',
     'availability poll', 'schedule coordinator', 'time picker', 'free meeting planner',
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   ],
   metadataBase: new URL('https://meettime-tawny.vercel.app'),
   openGraph: {
-    title: 'MeetTime - Find the Best Meeting Time for Everyone',
-    description: 'Create a free scheduling poll. Share the link and let everyone mark their available times. No signup needed.',
+    title: 'MeetTime (Free, 2026) – Find the Best Meeting Time for Everyone',
+    description: 'Find the perfect meeting time for your group in seconds. Free 2026 schedule coordinator with timezone support. No signup needed — share and coordinate.',
     type: 'website',
     siteName: 'MeetTime',
     locale: 'en_US',
@@ -61,6 +61,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <footer className="border-t border-gray-200 bg-white py-6 text-center text-sm text-gray-400">
+          
+            <div className="flex flex-wrap justify-center gap-4 mb-3">
+              <span className="text-xs text-gray-400 font-semibold">Related Free Tools:</span>
+                <a href="https://timezone-converter-ashy.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-xs">Timezone Converter</a>
+                <a href="https://emoji-copy-app.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-xs">Emoji Copy & Paste</a>
+                <a href="https://military-draft-calculator.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-xs">Draft Age Calculator</a>
+                <a href="https://bmi-calculator-free.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-xs">BMI Calculator</a>
+                <a href="https://utilicalc.vercel.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 text-xs">UtiliCalc</a>
+            </div>
           <div className="flex flex-wrap justify-center gap-4 mb-3">
             <a href="/privacy-policy" className="text-indigo-500 hover:text-indigo-700 text-xs">Privacy Policy</a>
             <a href="/terms" className="text-indigo-500 hover:text-indigo-700 text-xs">Terms of Service</a>

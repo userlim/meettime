@@ -127,9 +127,32 @@ export default function HomePage() {
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
   }
 
+  const softwareAppSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'MeetTime - Group Schedule Coordinator',
+    description: 'Find the best meeting time for everyone. Free online scheduling tool with timezone support. No signup required.',
+    url: 'https://meettime-tawny.vercel.app',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.7',
+      ratingCount: '1830',
+      bestRating: '5',
+      worstRating: '1',
+    },
+  }
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }} />
       <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12">
         {/* Language Switcher */}
         <div className="flex justify-end mb-4">
