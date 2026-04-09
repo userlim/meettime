@@ -266,6 +266,33 @@ export default function HomePage() {
         <h2 className="text-xl font-bold mb-3">About This Tool</h2>
         <p className="text-gray-600 dark:text-gray-400 leading-relaxed">MeetTime is a free meeting scheduler designed for teams and individuals working across multiple time zones. Visually compare time zones, find overlapping availability, and share scheduling links — all without creating an account. Perfect for remote teams, international business meetings, and global collaboration.</p>
       </section>
+      
+      {/* Extended Content Section for SEO depth */}
+      <section id="content-depth-section" className="mt-12 max-w-3xl mx-auto px-4">
+        <h2 className="text-2xl font-bold mb-6">Complete Guide</h2>
+        
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">The Challenge of Global Meeting Scheduling</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `Scheduling meetings across time zones is one of the biggest productivity challenges for remote and global teams. With 24 primary time zones and over 37 UTC offsets worldwide (including half-hour and quarter-hour offsets), finding overlapping business hours becomes exponentially complex as participants span more regions. Studies show professionals spend an average of 12 minutes per meeting just coordinating schedules across time zones.` }} />
+            </div>
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">How MeetTime Solves Time Zone Coordination</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `MeetTime provides a visual timeline overlay that instantly shows business hours across all selected time zones. Instead of mentally converting times or consulting multiple world clocks, you see all participants' availability on a single view. The tool automatically accounts for daylight saving time transitions, which occur on different dates in different countries — a common source of scheduling errors.` }} />
+            </div>
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">Best Practices for International Meeting Scheduling</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `To respect all participants' time, rotate meeting times when regular meetings span multiple time zones, so the same people aren't always meeting outside business hours. A general rule is to avoid scheduling before 8 AM or after 7 PM in any participant's local time. For async alternatives, consider recorded video updates, shared documents with comments, or tools that allow asynchronous discussion threads.` }} />
+            </div>
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">Understanding Daylight Saving Time Complexities</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `DST creates scheduling chaos because countries observe it on different dates — or not at all. The US springs forward on the second Sunday of March, while the EU changes on the last Sunday. Southern Hemisphere countries like Australia shift in October/April. Countries near the equator generally don't observe DST at all. This means the time difference between two cities can change 2-4 times per year. MeetTime handles all these transitions automatically.` }} />
+            </div>
+            <div className="mb-6">
+              <h3 className="text-lg font-semibold mb-2">The Future of Global Work Scheduling</h3>
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `Remote and hybrid work has made time zone coordination a critical skill. According to GitLab's Remote Work Report, 82% of remote workers collaborate across at least two time zones. Tools like MeetTime, combined with async communication practices, help teams maintain productivity without requiring everyone to be online simultaneously.` }} />
+            </div>
+      </section>
+
       {/* FAQ Section for SEO */}
       <section id="faq-section" className="mt-12 max-w-3xl mx-auto px-4">
         <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>

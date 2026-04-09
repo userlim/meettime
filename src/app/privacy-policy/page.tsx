@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Privacy Policy - MeetTime',
   description: 'Privacy Policy for MeetTime scheduling tool.',
+  robots: { index: false, follow: true },
 }
 
 export default function PrivacyPolicy() {

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Terms of Service - MeetTime',
   description: 'Terms of Service for MeetTime scheduling tool.',
+  robots: { index: false, follow: true },
 }
 
 export default function Terms() {
