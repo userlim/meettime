@@ -260,6 +260,34 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      {/* SEO Content Section */}
+      <section id="about-section" className="mt-8 max-w-3xl mx-auto px-4">
+        <h2 className="text-xl font-bold mb-3">About This Tool</h2>
+        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">MeetTime is a free meeting scheduler designed for teams and individuals working across multiple time zones. Visually compare time zones, find overlapping availability, and share scheduling links — all without creating an account. Perfect for remote teams, international business meetings, and global collaboration.</p>
+      </section>
+      {/* FAQ Section for SEO */}
+      <section id="faq-section" className="mt-12 max-w-3xl mx-auto px-4">
+        <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">How does MeetTime help schedule meetings across time zones?</h3>
+              <p className="text-gray-600 dark:text-gray-400">MeetTime lets you overlay multiple time zones on a visual timeline. Select participants' time zones and see everyone's business hours at a glance, making it easy to find a time that works for all attendees.</p>
+            </div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">Can I share my MeetTime schedule with others?</h3>
+              <p className="text-gray-600 dark:text-gray-400">Yes! Create your availability, then share a unique link with participants. They can view time options in their own local time zone and mark their availability. No account needed.</p>
+            </div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">How many time zones can I compare at once?</h3>
+              <p className="text-gray-600 dark:text-gray-400">MeetTime supports comparing unlimited time zones simultaneously. Whether you're coordinating between 2 cities or 10, the visual timeline makes it easy to find overlapping availability.</p>
+            </div>
+            <div className="mb-4">
+              <h3 className="text-lg font-semibold mb-2">Is MeetTime free to use?</h3>
+              <p className="text-gray-600 dark:text-gray-400">Yes, MeetTime is completely free with no signup required. Create meetings, share links, and coordinate schedules across time zones at no cost.</p>
+            </div>
+      </section>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does MeetTime help schedule meetings across time zones?", "acceptedAnswer": {"@type": "Answer", "text": "MeetTime lets you overlay multiple time zones on a visual timeline. Select participants' time zones and see everyone's business hours at a glance, making it easy to find a time that works for all attendees."}}, {"@type": "Question", "name": "Can I share my MeetTime schedule with others?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Create your availability, then share a unique link with participants. They can view time options in their own local time zone and mark their availability. No account needed."}}, {"@type": "Question", "name": "How many time zones can I compare at once?", "acceptedAnswer": {"@type": "Answer", "text": "MeetTime supports comparing unlimited time zones simultaneously. Whether you're coordinating between 2 cities or 10, the visual timeline makes it easy to find overlapping availability."}}, {"@type": "Question", "name": "Is MeetTime free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, MeetTime is completely free with no signup required. Create meetings, share links, and coordinate schedules across time zones at no cost."}}]}) }} />
     </>
   )
 }
