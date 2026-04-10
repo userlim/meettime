@@ -202,7 +202,7 @@ function EventContent() {
   if (notFound || !event) {
     return (
       <div className="max-w-md mx-auto px-4 py-20 text-center">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">{t(locale, 'eventNotFound')}</h1>
+        <h1 className="text-2xl font-bold text-gray-100 mb-2">{t(locale, 'eventNotFound')}</h1>
         <p className="text-gray-500 mb-6">{t(locale, 'eventNotFoundDesc')}</p>
         <a href="/" className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition">{t(locale, 'createNewEvent')}</a>
       </div>
@@ -240,14 +240,14 @@ function EventContent() {
       {/* Language */}
       <div className="flex justify-end mb-2">
         <select value={locale} onChange={e => setLocale(e.target.value as Locale)}
-          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-600 outline-none">
+          className="text-sm border border-white/10 rounded-lg px-3 py-1.5 bg-white/[0.03] text-gray-400 outline-none">
           {(Object.keys(LOCALE_NAMES) as Locale[]).map(l => <option key={l} value={l}>{LOCALE_NAMES[l]}</option>)}
         </select>
       </div>
 
       {/* Header */}
       <div className="mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">{event.n}</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-1">{event.n}</h1>
         <p className="text-sm text-gray-500">
           {event.d.length} {event.d.length > 1 ? t(locale, 'dates') : t(locale, 'date')} &middot; {formatHour(event.s)} - {formatHour(event.e)} &middot; {event.tz.replace(/_/g, ' ')}
         </p>
@@ -272,19 +272,19 @@ function EventContent() {
 
       {/* Join or Switch View */}
       {!joined ? (
-        <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-8 max-w-md">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">{t(locale, 'enterName')}</h2>
+        <div className="bg-white/[0.03] rounded-2xl border border-white/10 p-6 mb-8 max-w-md">
+          <h2 className="text-lg font-semibold text-gray-200 mb-4">{t(locale, 'enterName')}</h2>
           <input type="text" value={userName} onChange={e => setUserName(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && joinEvent()}
             placeholder={t(locale, 'yourName')}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-800 mb-4" maxLength={50} />
+            className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-200 mb-4" maxLength={50} />
           <button onClick={joinEvent}
             className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">
             {t(locale, 'joinEvent')}
           </button>
           {event.p.length > 0 && (
             <button onClick={() => { setViewMode('results'); setJoined(false) }}
-              className="w-full py-3 mt-2 border border-gray-300 text-gray-700 font-medium rounded-xl hover:bg-gray-50 transition">
+              className="w-full py-3 mt-2 border border-white/10 text-gray-300 font-medium rounded-xl hover:bg-white/[0.02] transition">
               {t(locale, 'viewResults')}
             </button>
           )}
@@ -292,11 +292,11 @@ function EventContent() {
       ) : (
         <div className="flex gap-2 mb-6">
           <button onClick={() => setViewMode('select')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'select' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'select' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}>
             {t(locale, 'markAvailability')}
           </button>
           <button onClick={() => setViewMode('results')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'results' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'results' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}>
             {t(locale, 'viewResults')}
           </button>
         </div>
@@ -313,7 +313,7 @@ function EventContent() {
                   <th className="w-14 sm:w-20" />
                   {event.d.map(d => {
                     const { weekday, monthDay } = formatDate(d)
-                    return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-gray-400">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-gray-700">{monthDay}</div></th>
+                    return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-gray-400">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-gray-300">{monthDay}</div></th>
                   })}
                 </tr>
               </thead>
@@ -330,7 +330,7 @@ function EventContent() {
                         <td key={`${dateIdx}-${slotIdx}`} className="p-0">
                           <div data-idx={idx}
                             className={`availability-cell h-6 sm:h-7 border border-gray-100 cursor-pointer
-                              ${isSelected ? 'bg-emerald-400' : 'bg-gray-50 hover:bg-gray-100'}
+                              ${isSelected ? 'bg-emerald-400' : 'bg-white/[0.02] hover:bg-gray-100'}
                               ${ts.half === 0 ? 'border-t-gray-200' : ''}`}
                             onMouseDown={e => { e.preventDefault(); handleCellStart(idx) }}
                             onMouseEnter={() => handleCellEnter(idx)}
@@ -350,7 +350,7 @@ function EventContent() {
               {t(locale, 'saveAvailability')}
             </button>
             <button onClick={() => setSelectedSlots(new Set())}
-              className="px-4 py-3 border border-gray-300 text-gray-600 rounded-xl hover:bg-gray-50 transition text-sm">
+              className="px-4 py-3 border border-white/10 text-gray-400 rounded-xl hover:bg-white/[0.02] transition text-sm">
               {t(locale, 'clearAll')}
             </button>
           </div>
@@ -360,7 +360,7 @@ function EventContent() {
       {/* Results Heatmap */}
       {(viewMode === 'results') && (
         <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-800 mb-2">{t(locale, 'groupAvailability')}</h2>
+          <h2 className="text-lg font-semibold text-gray-200 mb-2">{t(locale, 'groupAvailability')}</h2>
 
           {event.p.length === 0 ? (
             <p className="text-gray-500 text-sm">{t(locale, 'noParticipants')}</p>
@@ -388,7 +388,7 @@ function EventContent() {
                       <th className="w-14 sm:w-20" />
                       {event.d.map(d => {
                         const { weekday, monthDay } = formatDate(d)
-                        return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-gray-400">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-gray-700">{monthDay}</div></th>
+                        return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-gray-400">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-gray-300">{monthDay}</div></th>
                       })}
                     </tr>
                   </thead>
@@ -429,9 +429,9 @@ function EventContent() {
 
               {/* Participants */}
               <div className="mt-6">
-                <h3 className="text-sm font-semibold text-gray-700 mb-2">{t(locale, 'participants')} ({event.p.length})</h3>
+                <h3 className="text-sm font-semibold text-gray-300 mb-2">{t(locale, 'participants')} ({event.p.length})</h3>
                 <div className="flex flex-wrap gap-2">
-                  {event.p.map(p => <span key={p.n} className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full">{p.n}</span>)}
+                  {event.p.map(p => <span key={p.n} className="px-3 py-1 bg-gray-100 text-gray-300 text-sm rounded-full">{p.n}</span>)}
                 </div>
               </div>
             </>

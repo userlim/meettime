@@ -43,13 +43,13 @@ function CalendarPicker({ selectedDates, onToggleDate, locale }: { selectedDates
   for (let d = 1; d <= daysInMonth; d++) cells.push(d)
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-4">
+    <div className="bg-white/[0.03] rounded-xl border border-white/10 p-4">
       <div className="flex items-center justify-between mb-4">
-        <button onClick={() => setViewDate(new Date(year, month - 1, 1))} className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600" aria-label="Previous">
+        <button onClick={() => setViewDate(new Date(year, month - 1, 1))} className="p-2 hover:bg-white/[0.04] rounded-lg transition text-gray-400" aria-label="Previous">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
         </button>
-        <span className="font-semibold text-gray-800">{MONTHS_EN[month]} {year}</span>
-        <button onClick={() => setViewDate(new Date(year, month + 1, 1))} className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600" aria-label="Next">
+        <span className="font-semibold text-gray-200">{MONTHS_EN[month]} {year}</span>
+        <button onClick={() => setViewDate(new Date(year, month + 1, 1))} className="p-2 hover:bg-white/[0.04] rounded-lg transition text-gray-400" aria-label="Next">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
         </button>
       </div>
@@ -66,7 +66,7 @@ function CalendarPicker({ selectedDates, onToggleDate, locale }: { selectedDates
           return (
             <button key={dateStr} disabled={isPast} onClick={() => !isPast && onToggleDate(dateStr)}
               className={`w-full aspect-square flex items-center justify-center text-sm font-medium rounded-lg transition
-                ${isPast ? 'text-gray-300 cursor-not-allowed' : isSelected ? 'bg-indigo-600 text-white' : 'text-gray-700 hover:bg-indigo-50 cursor-pointer'}`}
+                ${isPast ? 'text-gray-300 cursor-not-allowed' : isSelected ? 'bg-indigo-600 text-white' : 'text-gray-300 hover:bg-indigo-500/10 cursor-pointer'}`}
             >{day}</button>
           )
         })}
@@ -157,7 +157,7 @@ export default function HomePage() {
         {/* Language Switcher */}
         <div className="flex justify-end mb-4">
           <select value={locale} onChange={e => setLocale(e.target.value as Locale)}
-            className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-600 outline-none">
+            className="text-sm border border-white/10 rounded-lg px-3 py-1.5 bg-white/[0.03] text-gray-400 outline-none">
             {(Object.keys(LOCALE_NAMES) as Locale[]).map(l => (
               <option key={l} value={l}>{LOCALE_NAMES[l]}</option>
             ))}
@@ -165,20 +165,20 @@ export default function HomePage() {
         </div>
 
         <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">{t(locale, 'heroTitle')}</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3">{t(locale, 'heroTitle')}</h1>
           <p className="text-gray-500 text-base sm:text-lg max-w-lg mx-auto">{t(locale, 'heroDesc')}</p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 mb-8">
+        <div className="bg-white/[0.03] rounded-2xl shadow-sm border border-white/5 p-6 sm:p-8 mb-8">
           <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">{t(locale, 'eventName')}</label>
+            <label className="block text-sm font-semibold text-gray-300 mb-2">{t(locale, 'eventName')}</label>
             <input type="text" value={eventName} onChange={e => setEventName(e.target.value)}
               placeholder={t(locale, 'eventNamePlaceholder')}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-800 bg-white" maxLength={100} />
+              className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-200 bg-white/[0.03]" maxLength={100} />
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-300 mb-2">
               {t(locale, 'selectDates')}
               {selectedDates.length > 0 && <span className="ml-2 text-indigo-600 font-normal">({selectedDates.length} {t(locale, 'selected')})</span>}
             </label>
@@ -189,7 +189,7 @@ export default function HomePage() {
                   const [y,m,day] = d.split('-')
                   const dateObj = new Date(parseInt(y), parseInt(m)-1, parseInt(day))
                   return (
-                    <span key={d} className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-50 text-indigo-700 text-xs font-medium rounded-full">
+                    <span key={d} className="inline-flex items-center gap-1 px-3 py-1 bg-indigo-500/10 text-indigo-700 text-xs font-medium rounded-full">
                       {dateObj.toLocaleDateString(locale === 'en' ? 'en-US' : locale, { month: 'short', day: 'numeric', weekday: 'short' })}
                       <button onClick={() => toggleDate(d)} className="ml-1 text-indigo-400 hover:text-indigo-700">&times;</button>
                     </span>
@@ -201,43 +201,43 @@ export default function HomePage() {
 
           <div className="mb-6 grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">{t(locale, 'earliestTime')}</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-2">{t(locale, 'earliestTime')}</label>
               <select value={startHour} onChange={e => setStartHour(parseInt(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white text-gray-800">
+                className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white/[0.03] text-gray-200">
                 {hours.map(h => <option key={h} value={h} disabled={h >= endHour}>{formatHour(h)}</option>)}
               </select>
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">{t(locale, 'latestTime')}</label>
+              <label className="block text-sm font-semibold text-gray-300 mb-2">{t(locale, 'latestTime')}</label>
               <select value={endHour} onChange={e => setEndHour(parseInt(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white text-gray-800">
+                className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white/[0.03] text-gray-200">
                 {hours.filter(h => h > 0).map(h => <option key={h} value={h} disabled={h <= startHour}>{formatHour(h)}</option>)}
               </select>
             </div>
           </div>
 
           <div className="mb-8">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">{t(locale, 'timezone')}</label>
+            <label className="block text-sm font-semibold text-gray-300 mb-2">{t(locale, 'timezone')}</label>
             <select value={timezone} onChange={e => setTimezone(e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white text-gray-800">
+              className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white/[0.03] text-gray-200">
               {timezones.map(tz => <option key={tz} value={tz}>{tz.replace(/_/g, ' ')}</option>)}
             </select>
           </div>
 
           <button onClick={createEvent} disabled={creating}
-            className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold rounded-xl shadow-lg shadow-indigo-200 transition text-lg">
+            className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold rounded-xl shadow-lg shadow-black/20 shadow-indigo-200 transition text-lg">
             {creating ? t(locale, 'creating') : t(locale, 'createEvent')}
           </button>
         </div>
 
         {/* How It Works */}
         <div className="mt-16 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">{t(locale, 'howItWorks')}</h2>
+          <h2 className="text-2xl font-bold text-gray-100 text-center mb-8">{t(locale, 'howItWorks')}</h2>
           <div className="grid sm:grid-cols-3 gap-6">
             {['step1','step2','step3'].map((step, i) => (
               <div key={step} className="text-center p-4">
                 <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">{i+1}</div>
-                <h3 className="font-semibold text-gray-800 mb-1">{t(locale, `${step}Title`)}</h3>
+                <h3 className="font-semibold text-gray-200 mb-1">{t(locale, `${step}Title`)}</h3>
                 <p className="text-sm text-gray-500">{t(locale, `${step}Desc`)}</p>
               </div>
             ))}
@@ -246,15 +246,15 @@ export default function HomePage() {
 
         {/* FAQ */}
         <div className="mt-12 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">{t(locale, 'faq')}</h2>
+          <h2 className="text-2xl font-bold text-gray-100 text-center mb-8">{t(locale, 'faq')}</h2>
           <div className="space-y-3">
             {['Free','Account','Timezone','Limit','Mobile','Heatmap'].map(key => (
-              <details key={key} className="bg-white border border-gray-200 rounded-xl p-4 group">
-                <summary className="font-medium text-gray-800 cursor-pointer list-none flex items-center justify-between">
+              <details key={key} className="bg-white/[0.03] border border-white/10 rounded-xl p-4 group">
+                <summary className="font-medium text-gray-200 cursor-pointer list-none flex items-center justify-between">
                   {t(locale, `faq${key}Q`)}
                   <svg className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>
                 </summary>
-                <p className="mt-3 text-gray-600 text-sm leading-relaxed">{t(locale, `faq${key}A`)}</p>
+                <p className="mt-3 text-gray-400 text-sm leading-relaxed">{t(locale, `faq${key}A`)}</p>
               </details>
             ))}
           </div>
@@ -264,7 +264,7 @@ export default function HomePage() {
       {/* SEO Content Section */}
       <section id="about-section" className="mt-8 max-w-3xl mx-auto px-4">
         <h2 className="text-xl font-bold mb-3">About This Tool</h2>
-        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">MeetTime is a free meeting scheduler designed for teams and individuals working across multiple time zones. Visually compare time zones, find overlapping availability, and share scheduling links — all without creating an account. Perfect for remote teams, international business meetings, and global collaboration.</p>
+        <p className="text-gray-400 dark:text-gray-400 leading-relaxed">MeetTime is a free meeting scheduler designed for teams and individuals working across multiple time zones. Visually compare time zones, find overlapping availability, and share scheduling links — all without creating an account. Perfect for remote teams, international business meetings, and global collaboration.</p>
       </section>
       
       {/* Extended Content Section for SEO depth */}
@@ -273,23 +273,23 @@ export default function HomePage() {
         
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">The Challenge of Global Meeting Scheduling</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `Scheduling meetings across time zones is one of the biggest productivity challenges for remote and global teams. With 24 primary time zones and over 37 UTC offsets worldwide (including half-hour and quarter-hour offsets), finding overlapping business hours becomes exponentially complex as participants span more regions. Studies show professionals spend an average of 12 minutes per meeting just coordinating schedules across time zones.` }} />
+              <p className="text-gray-400 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `Scheduling meetings across time zones is one of the biggest productivity challenges for remote and global teams. With 24 primary time zones and over 37 UTC offsets worldwide (including half-hour and quarter-hour offsets), finding overlapping business hours becomes exponentially complex as participants span more regions. Studies show professionals spend an average of 12 minutes per meeting just coordinating schedules across time zones.` }} />
             </div>
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">How MeetTime Solves Time Zone Coordination</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `MeetTime provides a visual timeline overlay that instantly shows business hours across all selected time zones. Instead of mentally converting times or consulting multiple world clocks, you see all participants' availability on a single view. The tool automatically accounts for daylight saving time transitions, which occur on different dates in different countries — a common source of scheduling errors.` }} />
+              <p className="text-gray-400 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `MeetTime provides a visual timeline overlay that instantly shows business hours across all selected time zones. Instead of mentally converting times or consulting multiple world clocks, you see all participants' availability on a single view. The tool automatically accounts for daylight saving time transitions, which occur on different dates in different countries — a common source of scheduling errors.` }} />
             </div>
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">Best Practices for International Meeting Scheduling</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `To respect all participants' time, rotate meeting times when regular meetings span multiple time zones, so the same people aren't always meeting outside business hours. A general rule is to avoid scheduling before 8 AM or after 7 PM in any participant's local time. For async alternatives, consider recorded video updates, shared documents with comments, or tools that allow asynchronous discussion threads.` }} />
+              <p className="text-gray-400 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `To respect all participants' time, rotate meeting times when regular meetings span multiple time zones, so the same people aren't always meeting outside business hours. A general rule is to avoid scheduling before 8 AM or after 7 PM in any participant's local time. For async alternatives, consider recorded video updates, shared documents with comments, or tools that allow asynchronous discussion threads.` }} />
             </div>
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">Understanding Daylight Saving Time Complexities</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `DST creates scheduling chaos because countries observe it on different dates — or not at all. The US springs forward on the second Sunday of March, while the EU changes on the last Sunday. Southern Hemisphere countries like Australia shift in October/April. Countries near the equator generally don't observe DST at all. This means the time difference between two cities can change 2-4 times per year. MeetTime handles all these transitions automatically.` }} />
+              <p className="text-gray-400 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `DST creates scheduling chaos because countries observe it on different dates — or not at all. The US springs forward on the second Sunday of March, while the EU changes on the last Sunday. Southern Hemisphere countries like Australia shift in October/April. Countries near the equator generally don't observe DST at all. This means the time difference between two cities can change 2-4 times per year. MeetTime handles all these transitions automatically.` }} />
             </div>
             <div className="mb-6">
               <h3 className="text-lg font-semibold mb-2">The Future of Global Work Scheduling</h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `Remote and hybrid work has made time zone coordination a critical skill. According to GitLab's Remote Work Report, 82% of remote workers collaborate across at least two time zones. Tools like MeetTime, combined with async communication practices, help teams maintain productivity without requiring everyone to be online simultaneously.` }} />
+              <p className="text-gray-400 dark:text-gray-400 leading-relaxed text-sm" dangerouslySetInnerHTML={{ __html: `Remote and hybrid work has made time zone coordination a critical skill. According to GitLab's Remote Work Report, 82% of remote workers collaborate across at least two time zones. Tools like MeetTime, combined with async communication practices, help teams maintain productivity without requiring everyone to be online simultaneously.` }} />
             </div>
       </section>
 
@@ -299,22 +299,29 @@ export default function HomePage() {
         
             <div className="mb-4">
               <h3 className="text-lg font-semibold mb-2">How does MeetTime help schedule meetings across time zones?</h3>
-              <p className="text-gray-600 dark:text-gray-400">MeetTime lets you overlay multiple time zones on a visual timeline. Select participants' time zones and see everyone's business hours at a glance, making it easy to find a time that works for all attendees.</p>
+              <p className="text-gray-400 dark:text-gray-400">MeetTime lets you overlay multiple time zones on a visual timeline. Select participants' time zones and see everyone's business hours at a glance, making it easy to find a time that works for all attendees.</p>
             </div>
             <div className="mb-4">
               <h3 className="text-lg font-semibold mb-2">Can I share my MeetTime schedule with others?</h3>
-              <p className="text-gray-600 dark:text-gray-400">Yes! Create your availability, then share a unique link with participants. They can view time options in their own local time zone and mark their availability. No account needed.</p>
+              <p className="text-gray-400 dark:text-gray-400">Yes! Create your availability, then share a unique link with participants. They can view time options in their own local time zone and mark their availability. No account needed.</p>
             </div>
             <div className="mb-4">
               <h3 className="text-lg font-semibold mb-2">How many time zones can I compare at once?</h3>
-              <p className="text-gray-600 dark:text-gray-400">MeetTime supports comparing unlimited time zones simultaneously. Whether you're coordinating between 2 cities or 10, the visual timeline makes it easy to find overlapping availability.</p>
+              <p className="text-gray-400 dark:text-gray-400">MeetTime supports comparing unlimited time zones simultaneously. Whether you're coordinating between 2 cities or 10, the visual timeline makes it easy to find overlapping availability.</p>
             </div>
             <div className="mb-4">
               <h3 className="text-lg font-semibold mb-2">Is MeetTime free to use?</h3>
-              <p className="text-gray-600 dark:text-gray-400">Yes, MeetTime is completely free with no signup required. Create meetings, share links, and coordinate schedules across time zones at no cost.</p>
+              <p className="text-gray-400 dark:text-gray-400">Yes, MeetTime is completely free with no signup required. Create meetings, share links, and coordinate schedules across time zones at no cost.</p>
             </div>
       </section>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How does MeetTime help schedule meetings across time zones?", "acceptedAnswer": {"@type": "Answer", "text": "MeetTime lets you overlay multiple time zones on a visual timeline. Select participants' time zones and see everyone's business hours at a glance, making it easy to find a time that works for all attendees."}}, {"@type": "Question", "name": "Can I share my MeetTime schedule with others?", "acceptedAnswer": {"@type": "Answer", "text": "Yes! Create your availability, then share a unique link with participants. They can view time options in their own local time zone and mark their availability. No account needed."}}, {"@type": "Question", "name": "How many time zones can I compare at once?", "acceptedAnswer": {"@type": "Answer", "text": "MeetTime supports comparing unlimited time zones simultaneously. Whether you're coordinating between 2 cities or 10, the visual timeline makes it easy to find overlapping availability."}}, {"@type": "Question", "name": "Is MeetTime free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, MeetTime is completely free with no signup required. Create meetings, share links, and coordinate schedules across time zones at no cost."}}]}) }} />
-    </>
+    
+        {/* Keyword-Optimized Content */}
+        <section id="keyword-seo-section" className="mt-8 max-w-3xl mx-auto px-4">
+          <p className="text-sm text-gray-400 leading-relaxed">
+            Find the perfect meeting time across time zones. Our meeting time planner helps remote teams schedule across time zones effortlessly. Use our world clock meeting scheduler, international meeting planner, and overlap hours calculator — all free for global meeting scheduling.
+          </p>
+        </section>
+        </>
   )
 }
