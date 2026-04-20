@@ -203,7 +203,7 @@ function EventContent() {
     return (
       <div className="max-w-md mx-auto px-4 py-20 text-center">
         <h1 className="text-2xl font-bold text-gray-100 mb-2">{t(locale, 'eventNotFound')}</h1>
-        <p className="text-gray-500 mb-6">{t(locale, 'eventNotFoundDesc')}</p>
+        <p className="text-[var(--text-secondary)] mb-6">{t(locale, 'eventNotFoundDesc')}</p>
         <a href="/" className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition">{t(locale, 'createNewEvent')}</a>
       </div>
     )
@@ -240,7 +240,7 @@ function EventContent() {
       {/* Language */}
       <div className="flex justify-end mb-2">
         <select value={locale} onChange={e => setLocale(e.target.value as Locale)}
-          className="text-sm border border-white/10 rounded-lg px-3 py-1.5 bg-white/[0.03] text-gray-400 outline-none">
+          className="text-sm border border-[rgba(255,255,255,0.06)] rounded-lg px-3 py-1.5 bg-white/[0.03] text-[var(--text-muted)] outline-none">
           {(Object.keys(LOCALE_NAMES) as Locale[]).map(l => <option key={l} value={l}>{LOCALE_NAMES[l]}</option>)}
         </select>
       </div>
@@ -248,7 +248,7 @@ function EventContent() {
       {/* Header */}
       <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-1">{event.n}</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[var(--text-secondary)]">
           {event.d.length} {event.d.length > 1 ? t(locale, 'dates') : t(locale, 'date')} &middot; {formatHour(event.s)} - {formatHour(event.e)} &middot; {event.tz.replace(/_/g, ' ')}
         </p>
         <div className="mt-3 flex flex-wrap gap-2 items-center">
@@ -257,7 +257,7 @@ function EventContent() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             {copied ? t(locale, 'copied') : t(locale, 'copyLink')}
           </button>
-          <span className="text-sm text-gray-400">
+          <span className="text-sm text-[var(--text-muted)]">
             {event.p.length} {event.p.length !== 1 ? t(locale, 'participants') : t(locale, 'participant')}
           </span>
         </div>
@@ -272,19 +272,19 @@ function EventContent() {
 
       {/* Join or Switch View */}
       {!joined ? (
-        <div className="bg-white/[0.03] rounded-2xl border border-white/10 p-6 mb-8 max-w-md">
+        <div className="bg-white/[0.03] rounded-2xl border border-[rgba(255,255,255,0.06)] p-6 mb-8 max-w-md">
           <h2 className="text-lg font-semibold text-gray-200 mb-4">{t(locale, 'enterName')}</h2>
           <input type="text" value={userName} onChange={e => setUserName(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && joinEvent()}
             placeholder={t(locale, 'yourName')}
-            className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-200 mb-4" maxLength={50} />
+            className="w-full px-4 py-3 border border-[rgba(255,255,255,0.06)] rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-200 mb-4" maxLength={50} />
           <button onClick={joinEvent}
             className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl transition">
             {t(locale, 'joinEvent')}
           </button>
           {event.p.length > 0 && (
             <button onClick={() => { setViewMode('results'); setJoined(false) }}
-              className="w-full py-3 mt-2 border border-white/10 text-gray-300 font-medium rounded-xl hover:bg-white/[0.02] transition">
+              className="w-full py-3 mt-2 border border-[rgba(255,255,255,0.06)] text-[var(--text-muted)] font-medium rounded-xl hover:bg-white/[0.02] transition">
               {t(locale, 'viewResults')}
             </button>
           )}
@@ -292,11 +292,11 @@ function EventContent() {
       ) : (
         <div className="flex gap-2 mb-6">
           <button onClick={() => setViewMode('select')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'select' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}>
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'select' ? 'bg-indigo-600 text-white' : 'bg-[rgba(255,255,255,0.02)] text-[var(--text-muted)] hover:bg-[rgba(255,255,255,0.04)]'}`}>
             {t(locale, 'markAvailability')}
           </button>
           <button onClick={() => setViewMode('results')}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'results' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'}`}>
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${viewMode === 'results' ? 'bg-indigo-600 text-white' : 'bg-[rgba(255,255,255,0.02)] text-[var(--text-muted)] hover:bg-[rgba(255,255,255,0.04)]'}`}>
             {t(locale, 'viewResults')}
           </button>
         </div>
@@ -305,7 +305,7 @@ function EventContent() {
       {/* Selection Grid */}
       {joined && viewMode === 'select' && (
         <div className="mb-8">
-          <p className="text-sm text-gray-500 mb-4">{isMobile ? t(locale, 'dragInstructionMobile') : t(locale, 'dragInstruction')}</p>
+          <p className="text-sm text-[var(--text-secondary)] mb-4">{isMobile ? t(locale, 'dragInstructionMobile') : t(locale, 'dragInstruction')}</p>
           <div className="grid-container" ref={gridRef} onTouchMove={handleTouchMove}>
             <table className="w-full border-collapse min-w-[320px]">
               <thead>
@@ -313,14 +313,14 @@ function EventContent() {
                   <th className="w-14 sm:w-20" />
                   {event.d.map(d => {
                     const { weekday, monthDay } = formatDate(d)
-                    return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-gray-400">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-gray-300">{monthDay}</div></th>
+                    return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-[var(--text-muted)]">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-[var(--text-muted)]">{monthDay}</div></th>
                   })}
                 </tr>
               </thead>
               <tbody>
                 {timeSlots.map((ts, slotIdx) => (
                   <tr key={slotIdx}>
-                    <td className="time-label text-right pr-1 sm:pr-2 text-xs text-gray-400 align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
+                    <td className="time-label text-right pr-1 sm:pr-2 text-xs text-[var(--text-muted)] align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
                       {ts.half === 0 ? formatHour(ts.hour) : ''}
                     </td>
                     {event.d.map((d, dateIdx) => {
@@ -330,7 +330,7 @@ function EventContent() {
                         <td key={`${dateIdx}-${slotIdx}`} className="p-0">
                           <div data-idx={idx}
                             className={`availability-cell h-6 sm:h-7 border border-gray-100 cursor-pointer
-                              ${isSelected ? 'bg-emerald-400' : 'bg-white/[0.02] hover:bg-gray-100'}
+                              ${isSelected ? 'bg-emerald-400' : 'bg-white/[0.02] hover:bg-[rgba(255,255,255,0.02)]'}
                               ${ts.half === 0 ? 'border-t-gray-200' : ''}`}
                             onMouseDown={e => { e.preventDefault(); handleCellStart(idx) }}
                             onMouseEnter={() => handleCellEnter(idx)}
@@ -350,7 +350,7 @@ function EventContent() {
               {t(locale, 'saveAvailability')}
             </button>
             <button onClick={() => setSelectedSlots(new Set())}
-              className="px-4 py-3 border border-white/10 text-gray-400 rounded-xl hover:bg-white/[0.02] transition text-sm">
+              className="px-4 py-3 border border-[rgba(255,255,255,0.06)] text-[var(--text-muted)] rounded-xl hover:bg-white/[0.02] transition text-sm">
               {t(locale, 'clearAll')}
             </button>
           </div>
@@ -363,7 +363,7 @@ function EventContent() {
           <h2 className="text-lg font-semibold text-gray-200 mb-2">{t(locale, 'groupAvailability')}</h2>
 
           {event.p.length === 0 ? (
-            <p className="text-gray-500 text-sm">{t(locale, 'noParticipants')}</p>
+            <p className="text-[var(--text-secondary)] text-sm">{t(locale, 'noParticipants')}</p>
           ) : (
             <>
               {bestSlotInfo && (
@@ -375,7 +375,7 @@ function EventContent() {
                 </div>
               )}
 
-              <div className="flex items-center gap-1.5 mb-4 text-xs text-gray-500">
+              <div className="flex items-center gap-1.5 mb-4 text-xs text-[var(--text-secondary)]">
                 <span>{t(locale, 'less')}</span>
                 {['heat-0','heat-1','heat-2','heat-3','heat-4','heat-5','heat-6','heat-7'].map(c => <div key={c} className={`w-4 h-4 rounded ${c}`} />)}
                 <span>{t(locale, 'more')}</span>
@@ -388,14 +388,14 @@ function EventContent() {
                       <th className="w-14 sm:w-20" />
                       {event.d.map(d => {
                         const { weekday, monthDay } = formatDate(d)
-                        return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-gray-400">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-gray-300">{monthDay}</div></th>
+                        return <th key={d} className="text-center px-0.5 pb-2"><div className="text-xs text-[var(--text-muted)]">{weekday}</div><div className="text-xs sm:text-sm font-semibold text-[var(--text-muted)]">{monthDay}</div></th>
                       })}
                     </tr>
                   </thead>
                   <tbody>
                     {timeSlots.map((ts, slotIdx) => (
                       <tr key={slotIdx}>
-                        <td className="time-label text-right pr-1 sm:pr-2 text-xs text-gray-400 align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
+                        <td className="time-label text-right pr-1 sm:pr-2 text-xs text-[var(--text-muted)] align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
                           {ts.half === 0 ? formatHour(ts.hour) : ''}
                         </td>
                         {event.d.map((d, dateIdx) => {
@@ -415,7 +415,7 @@ function EventContent() {
                               {isHovered && count > 0 && (
                                 <div className="absolute z-20 bottom-full left-1/2 -translate-x-1/2 mb-1 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap shadow-lg pointer-events-none">
                                   <div className="font-semibold mb-1">{count}/{event.p.length} {t(locale, 'available')}</div>
-                                  {pNames.map(name => <div key={name} className="text-gray-300">{name}</div>)}
+                                  {pNames.map(name => <div key={name} className="text-[var(--text-muted)]">{name}</div>)}
                                 </div>
                               )}
                             </td>
@@ -429,9 +429,9 @@ function EventContent() {
 
               {/* Participants */}
               <div className="mt-6">
-                <h3 className="text-sm font-semibold text-gray-300 mb-2">{t(locale, 'participants')} ({event.p.length})</h3>
+                <h3 className="text-sm font-semibold text-[var(--text-muted)] mb-2">{t(locale, 'participants')} ({event.p.length})</h3>
                 <div className="flex flex-wrap gap-2">
-                  {event.p.map(p => <span key={p.n} className="px-3 py-1 bg-gray-100 text-gray-300 text-sm rounded-full">{p.n}</span>)}
+                  {event.p.map(p => <span key={p.n} className="px-3 py-1 bg-[rgba(255,255,255,0.02)] text-[var(--text-muted)] text-sm rounded-full">{p.n}</span>)}
                 </div>
               </div>
             </>

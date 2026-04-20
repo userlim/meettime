@@ -224,7 +224,7 @@ export default function EventPage() {
       <div className="max-w-md mx-auto px-4 py-20 text-center">
         <div className="text-6xl mb-4">?</div>
         <h1 className="text-2xl font-bold text-gray-100 mb-2">Event Not Found</h1>
-        <p className="text-gray-500 mb-6">This event link may have expired or is invalid.</p>
+        <p className="text-[var(--text-secondary)] mb-6">This event link may have expired or is invalid.</p>
         <a href="/" className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition">
           Create New Event
         </a>
@@ -265,7 +265,7 @@ export default function EventPage() {
       {/* Event Header */}
       <div className="mb-6 sm:mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-1">{event.name}</h1>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-[var(--text-secondary)]">
           {event.dates.length} date{event.dates.length > 1 ? 's' : ''} &middot; {formatHour(event.startHour)} - {formatHour(event.endHour)} &middot; {event.timezone.replace(/_/g, ' ')}
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
@@ -274,7 +274,7 @@ export default function EventPage() {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
             {copied ? 'Copied!' : 'Copy Share Link'}
           </button>
-          <span className="text-sm text-gray-400 flex items-center">
+          <span className="text-sm text-[var(--text-muted)] flex items-center">
             {event.participants.length} participant{event.participants.length !== 1 ? 's' : ''}
           </span>
         </div>
@@ -282,7 +282,7 @@ export default function EventPage() {
 
       {/* Join or Switch View */}
       {!joined ? (
-        <div className="bg-white/[0.03] rounded-2xl border border-white/10 p-6 mb-8 max-w-md">
+        <div className="bg-white/[0.03] rounded-2xl border border-[rgba(255,255,255,0.06)] p-6 mb-8 max-w-md">
           <h2 className="text-lg font-semibold text-gray-200 mb-4">Enter Your Name to Join</h2>
           <input
             type="text"
@@ -290,7 +290,7 @@ export default function EventPage() {
             onChange={e => setUserName(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && joinEvent()}
             placeholder="Your name"
-            className="w-full px-4 py-3 border border-white/10 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-200 mb-4"
+            className="w-full px-4 py-3 border border-[rgba(255,255,255,0.06)] rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-200 mb-4"
             maxLength={50}
           />
           <button onClick={joinEvent}
@@ -299,7 +299,7 @@ export default function EventPage() {
           </button>
           {event.participants.length > 0 && (
             <button onClick={() => setViewMode('results')}
-              className="w-full py-3 mt-2 border border-white/10 text-gray-300 font-medium rounded-xl hover:bg-white/[0.02] transition">
+              className="w-full py-3 mt-2 border border-[rgba(255,255,255,0.06)] text-[var(--text-muted)] font-medium rounded-xl hover:bg-white/[0.02] transition">
               View Results Only
             </button>
           )}
@@ -308,13 +308,13 @@ export default function EventPage() {
         <div className="flex gap-2 mb-6">
           <button onClick={() => setViewMode('select')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-              viewMode === 'select' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
+              viewMode === 'select' ? 'bg-indigo-600 text-white' : 'bg-[rgba(255,255,255,0.02)] text-[var(--text-muted)] hover:bg-[rgba(255,255,255,0.04)]'
             }`}>
             Mark Availability
           </button>
           <button onClick={() => setViewMode('results')}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-              viewMode === 'results' ? 'bg-indigo-600 text-white' : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
+              viewMode === 'results' ? 'bg-indigo-600 text-white' : 'bg-[rgba(255,255,255,0.02)] text-[var(--text-muted)] hover:bg-[rgba(255,255,255,0.04)]'
             }`}>
             View Results
           </button>
@@ -324,7 +324,7 @@ export default function EventPage() {
       {/* Availability Selection Grid */}
       {joined && viewMode === 'select' && (
         <div className="mb-8">
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-[var(--text-secondary)] mb-4">
             Click and drag to select your available times. Green = available.
           </p>
           <div className="grid-container" ref={gridRef} onTouchMove={handleTouchMove}>
@@ -336,8 +336,8 @@ export default function EventPage() {
                     const { weekday, monthDay } = formatDate(d)
                     return (
                       <th key={d} className="text-center px-1 pb-2">
-                        <div className="text-xs text-gray-400">{weekday}</div>
-                        <div className="text-sm font-semibold text-gray-300">{monthDay}</div>
+                        <div className="text-xs text-[var(--text-muted)]">{weekday}</div>
+                        <div className="text-sm font-semibold text-[var(--text-muted)]">{monthDay}</div>
                       </th>
                     )
                   })}
@@ -346,7 +346,7 @@ export default function EventPage() {
               <tbody>
                 {timeSlots.map((ts, i) => (
                   <tr key={i}>
-                    <td className="time-label text-right pr-2 text-xs text-gray-400 align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
+                    <td className="time-label text-right pr-2 text-xs text-[var(--text-muted)] align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
                       {ts.half === 0 ? formatHour(ts.hour) : ''}
                     </td>
                     {event.dates.map(d => {
@@ -357,7 +357,7 @@ export default function EventPage() {
                           <div
                             data-slotkey={slotKey}
                             className={`availability-cell h-5 sm:h-6 border border-gray-100 cursor-pointer
-                              ${isSelected ? 'bg-emerald-400' : 'bg-white/[0.02] hover:bg-gray-100'}
+                              ${isSelected ? 'bg-emerald-400' : 'bg-white/[0.02] hover:bg-[rgba(255,255,255,0.02)]'}
                               ${ts.half === 0 ? 'border-t-gray-200' : ''}`}
                             onMouseDown={(e) => { e.preventDefault(); handleCellStart(slotKey) }}
                             onMouseEnter={() => handleCellEnter(slotKey)}
@@ -377,7 +377,7 @@ export default function EventPage() {
               Save My Availability
             </button>
             <button onClick={() => setSelectedSlots(new Set())}
-              className="px-4 py-3 border border-white/10 text-gray-400 rounded-xl hover:bg-white/[0.02] transition text-sm">
+              className="px-4 py-3 border border-[rgba(255,255,255,0.06)] text-[var(--text-muted)] rounded-xl hover:bg-white/[0.02] transition text-sm">
               Clear All
             </button>
           </div>
@@ -390,7 +390,7 @@ export default function EventPage() {
           <h2 className="text-lg font-semibold text-gray-200 mb-2">Group Availability</h2>
 
           {event.participants.length === 0 ? (
-            <p className="text-gray-500 text-sm">No one has marked their availability yet. Share the link to get started!</p>
+            <p className="text-[var(--text-secondary)] text-sm">No one has marked their availability yet. Share the link to get started!</p>
           ) : (
             <>
               {/* Best time indicator */}
@@ -404,7 +404,7 @@ export default function EventPage() {
               )}
 
               {/* Legend */}
-              <div className="flex items-center gap-2 mb-4 text-xs text-gray-500">
+              <div className="flex items-center gap-2 mb-4 text-xs text-[var(--text-secondary)]">
                 <span>Less</span>
                 {['heat-0','heat-1','heat-2','heat-3','heat-4','heat-5','heat-6','heat-7'].map(c => (
                   <div key={c} className={`w-4 h-4 rounded ${c}`} />
@@ -421,8 +421,8 @@ export default function EventPage() {
                         const { weekday, monthDay } = formatDate(d)
                         return (
                           <th key={d} className="text-center px-1 pb-2">
-                            <div className="text-xs text-gray-400">{weekday}</div>
-                            <div className="text-sm font-semibold text-gray-300">{monthDay}</div>
+                            <div className="text-xs text-[var(--text-muted)]">{weekday}</div>
+                            <div className="text-sm font-semibold text-[var(--text-muted)]">{monthDay}</div>
                           </th>
                         )
                       })}
@@ -431,7 +431,7 @@ export default function EventPage() {
                   <tbody>
                     {timeSlots.map((ts, i) => (
                       <tr key={i}>
-                        <td className="time-label text-right pr-2 text-xs text-gray-400 align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
+                        <td className="time-label text-right pr-2 text-xs text-[var(--text-muted)] align-top" style={{ paddingTop: ts.half === 0 ? 2 : 0 }}>
                           {ts.half === 0 ? formatHour(ts.hour) : ''}
                         </td>
                         {event.dates.map(d => {
@@ -453,7 +453,7 @@ export default function EventPage() {
                                 <div className="absolute z-20 bottom-full left-1/2 -translate-x-1/2 mb-1 bg-gray-900 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap shadow-lg pointer-events-none">
                                   <div className="font-semibold mb-1">{count}/{event.participants.length} available</div>
                                   {participants.map(name => (
-                                    <div key={name} className="text-gray-300">{name}</div>
+                                    <div key={name} className="text-[var(--text-muted)]">{name}</div>
                                   ))}
                                 </div>
                               )}
@@ -468,10 +468,10 @@ export default function EventPage() {
 
               {/* Participant list */}
               <div className="mt-6">
-                <h3 className="text-sm font-semibold text-gray-300 mb-2">Participants ({event.participants.length})</h3>
+                <h3 className="text-sm font-semibold text-[var(--text-muted)] mb-2">Participants ({event.participants.length})</h3>
                 <div className="flex flex-wrap gap-2">
                   {event.participants.map(p => (
-                    <span key={p.name} className="px-3 py-1 bg-gray-100 text-gray-300 text-sm rounded-full">
+                    <span key={p.name} className="px-3 py-1 bg-[rgba(255,255,255,0.02)] text-[var(--text-muted)] text-sm rounded-full">
                       {p.name}
                     </span>
                   ))}

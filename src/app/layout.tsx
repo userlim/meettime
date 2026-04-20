@@ -1,38 +1,29 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import './globals.css'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'MeetTime (Free, 2026) – Schedule Meetings Across Time Zones Instantly',
   description: 'Find the perfect meeting time across any time zone. Visual scheduler, shareable links, no signup. Free tool for remote teams and international scheduling.',
-  keywords:
-    'time zone converter, meeting time planner, world clock meeting scheduler, schedule across time zones, best time to meet, time zone meeting finder, when to schedule call, international meeting planner, overlap hours calculator, remote team scheduler, cross timezone planner, meeting time converter, team time zone tool, global meeting scheduler free, find common meeting time',
-  keywords: [
-    'meeting scheduler', 'group schedule', 'find meeting time', 'when to meet',
-    'availability poll', 'schedule coordinator', 'time picker', 'free meeting planner',
-    'group availability', 'team scheduling tool', 'meeting time finder',
-  ],
+  keywords: 'time zone converter, meeting time planner, world clock meeting scheduler, schedule across time zones, best time to meet, time zone meeting finder, when to schedule call, international meeting planner, overlap hours calculator, remote team scheduler, cross timezone planner, meeting time converter, team time zone tool, global meeting scheduler free, find common meeting time',
   metadataBase: new URL('https://meettime-tawny.vercel.app'),
   openGraph: {
-    title: 'MeetTime (Free, 2026) – Find the Best Meeting Time for Everyone',
-    description: 'Find the perfect meeting time for your group in seconds. Free 2026 schedule coordinator with timezone support. No signup needed — share and coordinate.',
-  keywords:
-    'time zone converter, meeting time planner, world clock meeting scheduler, schedule across time zones, best time to meet, time zone meeting finder, when to schedule call, international meeting planner, overlap hours calculator, remote team scheduler, cross timezone planner, meeting time converter, team time zone tool, global meeting scheduler free, find common meeting time',
-    type: 'website',
+    title: 'MeetTime (Free, 2026) – Schedule Meetings Across Time Zones Instantly',
+    description: 'Find the perfect meeting time across any time zone. Visual scheduler, shareable links, no signup. Free tool for remote teams and international scheduling.',
+    url: 'https://meettime-tawny.vercel.app',
     siteName: 'MeetTime',
     locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MeetTime - Free Group Schedule Coordinator',
-    description: 'Find the perfect meeting time for your group. Free, fast, no signup.',
-  keywords:
-    'time zone converter, meeting time planner, world clock meeting scheduler, schedule across time zones, best time to meet, time zone meeting finder, when to schedule call, international meeting planner, overlap hours calculator, remote team scheduler, cross timezone planner, meeting time converter, team time zone tool, global meeting scheduler free, find common meeting time',
+    title: 'MeetTime',
+    description: 'Find the perfect meeting time across any time zone. Visual scheduler, shareable links, no signup. Free tool for remote teams and international scheduling.',
   },
   robots: {
     index: true,
     follow: true,
-    'max-image-preview': 'large',
+    'max-image-preview': 'large' as const,
     'max-snippet': -1,
     'max-video-preview': -1,
   },
@@ -44,8 +35,7 @@ export const metadata: Metadata = {
       'x-default': 'https://meettime-tawny.vercel.app',
     },
   },
-  },
-}
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -77,28 +67,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           __html: JSON.stringify({"@context": "https://schema.org", "@type": "WebPage", "speakable": {"@type": "SpeakableSpecification", "cssSelector": ["h1", ".keyword-seo-section p"]}})
         }} />
 </head>
-      <body className="min-h-screen flex flex-col antialiased">
-        <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
+      <body className="antialiased">
+        <header className="border-b border-[rgba(255,255,255,0.06)] bg-white sticky top-0 z-50">
           <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="/" className="text-xl font-bold text-indigo-600 flex items-center gap-2">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               MeetTime
             </a>
-            <a href="/" className="text-sm text-gray-500 hover:text-indigo-600 transition">New Event</a>
+            <a href="/" className="text-sm text-[var(--text-secondary)] hover:text-indigo-600 transition">New Event</a>
           </div>
         </header>
         <main className="flex-1">
           {children}
         </main>
-        <footer className="border-t border-gray-200 bg-white py-6 text-center text-sm text-gray-400">
+        <footer className="border-t border-[rgba(255,255,255,0.06)] bg-white py-6 text-center text-sm text-[var(--text-muted)]">
           
             <div className="flex flex-wrap justify-center gap-4 mb-3">
-              <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider">Related Free Tools:</span>
-                <a href="https://timezone-converter-ashy.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-xs">World Timezone Converter</a>
-                <a href="https://emoji-copy-app.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-xs">Emoji Copy & Paste Tool</a>
-                <a href="https://military-draft-calculator.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-xs">Military Draft Age Calculator</a>
-                <a href="https://bmi-calculator-free.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-xs">Free BMI Calculator</a>
-                <a href="https://utilicalc.vercel.app" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors text-xs">UtiliCalc All-in-One Tools</a>
+              <span className="text-xs text-[var(--text-secondary)] font-semibold uppercase tracking-wider">Related Free Tools:</span>
+                <a href="https://timezone-converter-ashy.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-white transition-colors text-xs">World Timezone Converter</a>
+                <a href="https://emoji-copy-app.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-white transition-colors text-xs">Emoji Copy & Paste Tool</a>
+                <a href="https://military-draft-calculator.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-white transition-colors text-xs">Military Draft Age Calculator</a>
+                <a href="https://bmi-calculator-free.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-white transition-colors text-xs">Free BMI Calculator</a>
+                <a href="https://utilicalc.vercel.app" target="_blank" rel="noopener noreferrer" className="text-[var(--text-muted)] hover:text-white transition-colors text-xs">UtiliCalc All-in-One Tools</a>
             </div>
           <div className="flex flex-wrap justify-center gap-4 mb-3">
             <a href="/privacy-policy" className="text-indigo-500 hover:text-indigo-700 text-xs">Privacy Policy</a>
