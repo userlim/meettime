@@ -8,15 +8,15 @@ export const metadata: Metadata = {
 export default function HowItWorks() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-12">
-      <h1 className="text-3xl font-bold mb-4 text-gray-100">How MeetTime Works</h1>
-      <p className="text-[#4E5968] mb-10 text-lg">Schedule group meetings in 3 simple steps. No account required.</p>
+      <h1 className="text-3xl font-bold mb-4 text-gray-900">How MeetTime Works</h1>
+      <p className="text-gray-500 mb-10 text-lg">Schedule group meetings in 3 simple steps. No account required.</p>
 
       <div className="space-y-10">
         <section className="flex gap-4">
-          <div className="shrink-0 w-10 h-10 bg-indigo-600 text-[#191F28] rounded-full flex items-center justify-center font-bold text-lg">1</div>
+          <div className="shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-200 mb-2">Create an Event</h2>
-            <p className="text-[#8B95A1] leading-relaxed">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Create an Event</h2>
+            <p className="text-gray-600 leading-relaxed">
               Enter your event name, select potential dates from the calendar, choose the time range
               (e.g. 9 AM to 9 PM), and pick your timezone. Click &quot;Create Event&quot; to generate a unique link.
             </p>
@@ -24,10 +24,10 @@ export default function HowItWorks() {
         </section>
 
         <section className="flex gap-4">
-          <div className="shrink-0 w-10 h-10 bg-indigo-600 text-[#191F28] rounded-full flex items-center justify-center font-bold text-lg">2</div>
+          <div className="shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-lg">2</div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-200 mb-2">Share the Link</h2>
-            <p className="text-[#8B95A1] leading-relaxed">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Share the Link</h2>
+            <p className="text-gray-600 leading-relaxed">
               Copy the share link and send it to all participants via chat, email, or any messaging app.
               Participants don&apos;t need an account &mdash; they simply enter their name and start selecting times.
             </p>
@@ -35,10 +35,10 @@ export default function HowItWorks() {
         </section>
 
         <section className="flex gap-4">
-          <div className="shrink-0 w-10 h-10 bg-indigo-600 text-[#191F28] rounded-full flex items-center justify-center font-bold text-lg">3</div>
+          <div className="shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-200 mb-2">Mark Your Availability</h2>
-            <p className="text-[#8B95A1] leading-relaxed">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Mark Your Availability</h2>
+            <p className="text-gray-600 leading-relaxed">
               Click and drag across the time grid to mark when you&apos;re free. The interface works on both desktop
               (mouse drag) and mobile (touch drag). Your selections are saved instantly.
             </p>
@@ -46,10 +46,10 @@ export default function HowItWorks() {
         </section>
 
         <section className="flex gap-4">
-          <div className="shrink-0 w-10 h-10 bg-emerald-600 text-[#191F28] rounded-full flex items-center justify-center font-bold text-lg">4</div>
+          <div className="shrink-0 w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</div>
           <div>
-            <h2 className="text-xl font-semibold text-gray-200 mb-2">Find the Best Time</h2>
-            <p className="text-[#8B95A1] leading-relaxed">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">Find the Best Time</h2>
+            <p className="text-gray-600 leading-relaxed">
               Switch to the &quot;View Results&quot; tab to see a heatmap of everyone&apos;s availability.
               Darker colors mean more people are free. Hover or tap any slot to see exactly who is available.
               The best time slot is highlighted automatically.
@@ -89,7 +89,7 @@ export default function HowItWorks() {
       </div>
 
       <div className="mt-10 text-center">
-        <a href="/" className="inline-block px-8 py-4 bg-indigo-600 text-[#191F28] font-semibold rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 text-lg">
+        <a href="/" className="inline-block px-8 py-4 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition shadow-lg shadow-indigo-200 text-lg">
           Create a Free Event Now
         </a>
       </div>
